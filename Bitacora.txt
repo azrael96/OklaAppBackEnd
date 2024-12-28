@@ -1,0 +1,89 @@
+----------------
+Week 1
+----------------
+-Datos de productos BD generados manualmente
+-Estudio del estado del Sistema recibido
+-Corrección de errores Scroll y Routing
+-Generación del modulo productos  	
+-Reinicio de la realización del sistema desde cero
+----------------
+Week 2
+----------------
+[DONE] Estructuración Básica del Sistema
+[DONE] Generación del Backend Base (PHP, MySQL)
+[DONE] Generación del Frontend Base (JS, Vue, Ionic)
+[DONE] Exportación Web y Android
+[DONE] Módulo Inicio de Sesión
+[DONE] Módulo de Usuarios
+	[DONE] Sub-Módulo Registro de Usuarios
+	[DONE] Sub-Módulo Edición de Usuarios
+[DONE] Mantener Sesión
+----------------
+Week 3
+----------------
+[DONE] Encriptar contraseñas
+[DONE] Validación Modulo Inicio Sesión, Usuarios
+[DONE] Menú desplegable
+[ONGOING] Imágenes en Scroll
+	[DONE] Funcionamiento base
+	[ONGOING] Conexión con múltiples imágenes
+[ONGOING] Modulo Productos
+	[ONGOING] Listado de Productos
+		[DONE] Mostrar todos los productos
+		[DONE] Separar las vistas en Baches
+		[ONGOING] Buscador de Productos
+			[DONE] Funcionamiento básico
+			[ONGOING] Filtros avanzados
+	[DONE]Listado últimos productos vistos
+	[DONE] Añadir Productos
+---------------
+Week 4
+----------------
+[DONE] Modulo Categorías
+	[DONE] Añadir Categoría
+	[DONE] Editar Categoría
+	[DONE] Sub-Categorías
+		[DONE] Búsquedas Recursivas a la BD
+[ONGOING] Modulo Productos
+	[DONE] Clasificación de Productos
+	[DONE] Edición de Clasificación
+	[DONE] Búsqueda de Productos por Categorías
+		[ONGOING] Tipo de Búsqueda Exclusiva
+		[ONGOING] Tipo de Búsqueda Inclusiva
+----------------
+Week 5
+----------------
+[ONGOING] Reestructuración del Frontend
+[ONGOING] Reestructuración del Backend
+[ONGOING] Refactorización del Código
+[ONGOING] Documentación del Código
+[DONE] Modulo Usuarios
+	[DONE] Estructura por Tipo Usuarios
+[DONE] Modulo Productos
+	[DONE] Búsquedas ordenadas por # de matches
+----------------
+Problemas
+----------------
+[SOLVED][W5] Búsqueda por prioridad es inconsistente 
+[SOLVED][W5] Components no se actualizan al hacer cambios a la bd 
+[SOLVED][W5] si un producto no tiene categorías no se puede acceder a el
+[SOLVED][W5] elementos vacíos generan múltiples errores
+[SOLVED][W4] Buscador no filtra por  
+[SOLVED][W4] Buscador es sensible a los espacios
+[SOLVED][W4] Buscador no debería ser afectado por el orden
+[SOLVED][W3] Las bases de datos de prueba y en servidor estaban desincronizadas
+[SOLVED][W3] Backend no funciona correctamente en el servidor
+[SOLVED][W3 W4] La ruta a las imágenes no cargan correctamente
+	[SOLVED][W3] solucionado en Android y Local
+	[SOLVED][W4] continua el problema en web
+[SOLVED][W2] Logos e Iconos no se actualizan o muestran correctamente
+
+----------------------------
+dependencias
+----------------------------
+tercer
+vuex
+vuex-persist
+axios
+vuese
+---------------------------
