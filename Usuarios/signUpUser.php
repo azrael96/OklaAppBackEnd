@@ -9,7 +9,7 @@ $documento = $_REQUEST["documento"];
 $telefono = $_REQUEST["telefono"];
 $correo = $_REQUEST["correo"];
 $nombre = $_REQUEST["nombre"];
-$apellidos = "";
+$estado = $_REQUEST["estado"];
 $rol = $_REQUEST["rol"];
 $doc = "";
 $avatar = "";
@@ -32,10 +32,10 @@ try{
       $stmt_u->fetch();
       $stmt_u->close();
 
-      if ($found_u) {
+      if ($found_u && $username != "") {
 
           echo json_encode(array(
-                              "message"=>"Error: El usuario ya existe",
+                              "message"=>"Error: El nombre de usuario ya existe",
                               "status"=>"Error"
                           ));
 
@@ -51,18 +51,18 @@ try{
         if ($found_doc) {
 
           echo json_encode(array(
-                            "message"=>"Error: El documento ya fue registrado",
+                            "message"=>"Error: El documento o NIT ya fue registrado",
                             "status"=>"Error"
                           ));
 
         }else{
-          $sql = "INSERT INTO USUARIOS ( `DOCUMENTO`, `NOMBRE_RAZON_SOCIAL`, `APELLIDOS`, `TELEFONO`, `CORREO`, `ROL`, `USERNAME`, `PASS`, `TIPO_DOC`, `AVATAR`)
+          $sql = "INSERT INTO USUARIOS ( `DOCUMENTO`, `NOMBRE_RAZON_SOCIAL`, `ESTADO`, `TELEFONO`, `CORREO`, `ROL`, `USERNAME`, `PASS`, `TIPO_DOC`, `AVATAR`)
           VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
           $stmt = $conn->prepare($sql);
           $stmt->bind_param('ssssssssis',      
                             $documento,
                             $nombre,
-                            $apellidos,
+                            $estado,
                             $telefono,
                             $correo,
                             $rol,
@@ -90,8 +90,13 @@ try{
         }
       }
 
-} catch(mysqli $e){
-    die("and error has been ocurred" . $e);
+} 
+catch(mysqli $e){
+  echo json_encode(array(
+    "message"=>$e,
+    "status"=>"Error",
+  ));
+  return $e;
 }
 
 $conn->close();

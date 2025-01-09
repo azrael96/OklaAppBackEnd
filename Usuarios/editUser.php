@@ -7,6 +7,11 @@ $rol = $_REQUEST["rol"];
 $telefono = $_REQUEST["telefono"];
 $correo = $_REQUEST["correo"];
 $nombre = $_REQUEST["nombre"];
+
+$estado = $_REQUEST["estado"];
+$username = $_REQUEST["username"];
+$documento = $_REQUEST["documento"];
+
 $id = $_REQUEST["id"];
 
 try{
@@ -17,22 +22,28 @@ try{
     $sql = 
       '
         UPDATE USUARIOS SET
+        DOCUMENTO=?,
         NOMBRE_RAZON_SOCIAL=?,
+        ESTADO=?,
         TELEFONO=?,
         CORREO=?,
-        ROL=?
+        ROL=?,
+        USERNAME=?
         WHERE ID=?
       '
     ;
 
-      $stmt = $conn->prepare($sql);
-      $stmt->bind_param('ssssi',      
-                        $nombre,
-                        $telefono,
-                        $correo,
-                        $rol,
-                        $id,
-                        );
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sssssssi',
+                      $documento,
+                      $nombre,
+                      $estado,
+                      $telefono,
+                      $correo,
+                      $rol,
+                      $username,
+                      $id,
+                      );
       
       if ($stmt->execute()){
         echo json_encode(array(
@@ -45,13 +56,17 @@ try{
         ));
       }else{
         echo json_encode(array(
-            "message"=>"Error: al modificar el usuario",
+            "message"=>"Error: El usuario no se pudo modificar",
             "status"=>"Error",
         ));
       }
-} catch(mysqli_sql_exception  $e){
-    echo $e->getMessage();
-    die("and error has been ocurred" . $e);
+}
+catch(mysqli $e){
+  echo json_encode(array(
+    "message"=>$e,
+    "status"=>"Error",
+  ));
+  return $e;
 }
 
 $conn->close();

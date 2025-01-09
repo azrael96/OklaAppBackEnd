@@ -7,7 +7,7 @@ $ID = $_REQUEST["id"];
 $nombre = $_REQUEST["nombre"];
 $descripcion = $_REQUEST["descripcion"];
 $estado = $_REQUEST["estado"];
-$padre = $_REQUEST["padreC"];
+$padre = $_REQUEST["padre"];
 
 if($padre == "Null"){
     $padre = NULL;
@@ -37,20 +37,27 @@ try{
 
     if ($stmt->execute()){
         echo json_encode(array(
-            "message"=>"La Categoria fue editada correctamente", 
-            "status"=>"Success"
+            "message"=>"La etiqueta fue editada correctamente", 
+            "status"=>"Success",
+            "padre"=>$padre
         ));
 
     }else{
 
     echo json_encode(array(
-            "message"=>"Error al cambiar el registro",
-            "status"=>"Error"
+            "message"=>"Error al cambiar la etiqueta",
+            "status"=>"Error",
+            "padre"=>$padre
         ));
     }
 
-} catch(Exception $e){
-    echo json_encode($e->getMessage());
+} 
+catch(mysqli $e){
+    echo json_encode(array(
+      "message"=>$e,
+      "status"=>"Error",
+    ));
+    return $e;
 }
 
 $conn->close();

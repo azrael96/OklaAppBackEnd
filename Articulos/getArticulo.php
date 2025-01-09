@@ -25,7 +25,6 @@ try{
     
     if($resultado->num_rows>0){
         $articulo = $resultado->fetch_assoc();
-        //$stmt->close();
 
         $sql_2 = "SELECT ID, ESPECIFICACION, ETIQUETA_ID_FK
                 FROM ATRIBUTO
@@ -41,11 +40,11 @@ try{
         if($resultado->num_rows>0){
             $atributo = $resultado->fetch_all(MYSQLI_ASSOC);
         }else{
-            $atributo = [""];
+            $atributo = "";
         }
 
         echo json_encode(array(
-            "message"=>"Producto encontrado",
+            "message"=>"Artículo encontrado",
             "status" => "Success",
             "articulo" => $articulo,
             "atributo" => $atributo,
@@ -54,13 +53,18 @@ try{
         
     }else{
         echo json_encode(array(
-            "message"=>"Error: El articulo no existe",
+            "message"=>"Error: El Artículo no existe",
             "status"=>"Error"
         ));
     }
 
-} catch(mysqli $e){
-    die("and error has been ocurred" . $e);
+} 
+catch(mysqli $e){
+    echo json_encode(array(
+      "message"=>$e,
+      "status"=>"Error",
+    ));
+    return $e;
 }
  
 $conn->close(); 

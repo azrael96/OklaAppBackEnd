@@ -11,7 +11,10 @@ $PRECIO= $_REQUEST["PRECIO"];
 $STOCK= $_REQUEST["STOCK"];
 $ESTADO= $_REQUEST["ESTADO"];
 
-$CATEGORIA = $_REQUEST["ETIQUETA"];
+$ETIQUETA = $_REQUEST["ETIQUETA"];
+if($ETIQUETA == "NINGUNA"){
+    $ETIQUETA = array();
+}
 
 try{
     if (!$conn) {
@@ -38,7 +41,7 @@ try{
     if ($stmt->execute()){
         $last_id = mysqli_insert_id($conn);
         
-        foreach ($CATEGORIA as $FILA) {         
+        foreach ($ETIQUETA as $FILA) {         
             $sql =       
             "INSERT INTO `ATRIBUTO`(`ARTICULO_ID_FK`, `ETIQUETA_ID_FK`, `ESPECIFICACION`) 
             VALUES (?,?,?)";
@@ -52,12 +55,7 @@ try{
                             $FILA["path"],
             ); 
 
-            if ($stmt_u->execute()){
-                /*echo json_encode(array(
-                    "message"=>"El articulo y sus etiquetas fue registrado correctamente", 
-                    "status"=>"Success"
-                ));*/
-            }else{
+            if (!($stmt_u->execute())){
                 echo json_encode(array(
                     "message"=>"Error al generar una etiqueta",
                     "status"=>"Error"
@@ -77,10 +75,7 @@ try{
         ));
     }
 }
-
-    
 catch(mysqli $e){
-    //die("and error has been ocurred" . $e);
     echo json_encode(array(
       "message"=>$e,
       "status"=>"Error",
@@ -89,7 +84,6 @@ catch(mysqli $e){
 }
 
 $conn->close();
-
 
 ?>
 

@@ -29,19 +29,24 @@ try{
     if($resultado->num_rows>0){
         $fila = $resultado->fetch_assoc();
         echo json_encode(array(
-            "message"=>"Se enviaron todas las etiquetas",
+            "message"=>"Se encontró la etiqueta",
             "status"=>"Success",
             "etiqueta" => $fila,
         ));
     }else{
         echo json_encode(array(
-            "message"=>"Error: No hay etiquetas",
+            "message"=>"Error: No se encontró la etiqueta",
             "status"=>"Error"
         ));
     }
 
-} catch(Exception $e){
-    echo $e->getMessage();
+}
+catch(mysqli $e){
+    echo json_encode(array(
+      "message"=>$e,
+      "status"=>"Error",
+    ));
+    return $e;
 }
 
 $conn->close();

@@ -23,24 +23,33 @@ try{
     if($resultado->num_rows>0){
         $fila = $resultado->fetch_assoc();
 
-        if(password_verify($password, $fila['PASS'])){
-            echo json_encode(array(
-                "message"=>"Inicio de sesión exitoso",
-                "status"=>"Success",
-                "id" => $fila['ID'],
-                "name"=> $fila['NOMBRE_RAZON_SOCIAL'],
-                "doc"=> $fila['DOCUMENTO'],
-                "correo"=> $fila['CORREO'],
-                "telefono"=> $fila['TELEFONO'],
-                "username"=> $fila['USERNAME'],
-                "rol"=> $fila['ROL'],
-            ));
+        if($fila['ESTADO'] == 'ACTIVO'){
+            if(password_verify($password, $fila['PASS'])){
+                echo json_encode(array(
+                    "message"=>"Inicio de sesión exitoso",
+                    "status"=>"Success",
+                    "id" => $fila['ID'],
+                    "name"=> $fila['NOMBRE_RAZON_SOCIAL'],
+                    "doc"=> $fila['DOCUMENTO'],
+                    "correo"=> $fila['CORREO'],
+                    "telefono"=> $fila['TELEFONO'],
+                    "username"=> $fila['USERNAME'],
+                    "rol"=> $fila['ROL'],
+                ));
+            }else{
+                echo json_encode(array(
+                    "message"=>"Error: La contraseña es incorrecta",
+                    "status"=>"Error"
+                ));
+            }
         }else{
             echo json_encode(array(
-                "message"=>"Error: La contraseña es incorrecta",
+                "message"=>"Error: El usuario no puede ingresar debido a que esta: ".$fila['ESTADO'],
                 "status"=>"Error"
             ));
         }
+
+        
     }else{
         echo json_encode(array(
             "message"=>"Error: El usuario no existe",
@@ -48,8 +57,13 @@ try{
         ));
     }
 
-} catch(mysqli $e){
-    die("and error has been ocurred" . $e);
+} 
+catch(mysqli $e){
+    echo json_encode(array(
+      "message"=>$e,
+      "status"=>"Error",
+    ));
+    return $e;
 }
 
 $conn->close();

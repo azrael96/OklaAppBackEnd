@@ -6,6 +6,7 @@ include("../db.php");
 $oldpassword = $_REQUEST["oldpassword"];
 $newpasswordIncoming = $_REQUEST["newpassword"];
 $id = $_REQUEST["id"];
+$admin = $_REQUEST["admin"];
 
 $options = [
     'cost' => 11
@@ -25,7 +26,7 @@ try{
     $stmt_u->fetch();
     $stmt_u->close();
 
-    if (!password_verify($oldpassword, $fila)) {
+    if (!password_verify($oldpassword, $fila) && !$admin) {
         echo json_encode(array(
             "message"=>"Error: La contraseña actual ingresada es incorrecta",
             "status"=>"Error"
@@ -37,8 +38,7 @@ try{
           UPDATE USUARIOS SET
           PASS=?
           WHERE ID=?
-        '
-      ;
+        ';
 
       $stmt = $conn->prepare($sql);
       $stmt->bind_param('si',      
@@ -53,8 +53,13 @@ try{
             ));  
         }
     }
-} catch(mysqli $e){
-    die("and error has been ocurred" . $e);
+}
+catch(mysqli $e){
+    echo json_encode(array(
+      "message"=>$e,
+      "status"=>"Error",
+    ));
+    return $e;
 }
 
 $conn->close();

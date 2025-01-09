@@ -57,34 +57,12 @@ try{
 
             foreach ($CATEGORIAS_DB as $CAT_DB ) {
 
-                /*
-                echo json_encode(array(
-                    "CATEGORIAS_IN"=>$CATEGORIAS_IN,
-                    "FILTER"=>array_column($CATEGORIAS_IN, "ETIQUETA_ID_FK"),
-                    "CAT_DB"=>$CAT_DB["ETIQUETA_ID_FK"],
-                    "IF" => array_search(
-                        $CAT_DB["ETIQUETA_ID_FK"], 
-                        array_column($CATEGORIAS_IN, "ID")
-                    ) !==FALSE,
-                ));
-                */
-
                 if(
-                    array_search(
+                    !(array_search(
                     $CAT_DB["ETIQUETA_ID_FK"], 
                     array_column($CATEGORIAS_IN, "ID")
-                    ) !== FALSE
-                )
-                {
-                    /*echo json_encode(array(
-                        "NO_DELETE"=>$CAT_DB,
-                    ));*/
-                }else{
-                    /*echo json_encode(array(
-                        "TO_DELETE"=>$CAT_DB,
-                    ));*/
-
-                    
+                    ) !== FALSE)
+                ){
                     $sql = "DELETE FROM ATRIBUTO 
                     WHERE (ARTICULO_ID_FK = ? 
                     AND ETIQUETA_ID_FK = ?)";
@@ -96,12 +74,7 @@ try{
                                     $CAT_DB["ETIQUETA_ID_FK"],
                     );
 
-                    if ($stmt->execute()){
-                        /*echo json_encode(array(
-                            "message"=>"Atributo eliminado", 
-                            "status"=>"Success"
-                        ));*/
-                    }else{
+                    if (!($stmt->execute())){
                         echo json_encode(array(
                             "message"=>"Error al eliminar un atributo",
                             "status"=>"Error"
@@ -113,32 +86,13 @@ try{
 
             foreach ($CATEGORIAS_IN as $CAT_INPUT ) {
                 
-                /*
-                echo json_encode(array(
-                    "CATEGORIAS_DB"=>$CATEGORIAS_DB,
-                    "FILTER"=>array_column($CATEGORIAS_DB, "ETIQUETA_ID_FK"),
-                    "CAT_INPUT"=>$CAT_INPUT["ID"], 
-                    "IF" => array_search(
-                        $CAT_INPUT["ID"], 
-                        array_column($CATEGORIAS_DB, "ETIQUETA_ID_FK")
-                    ) !==FALSE,
-                ));
-                */
-
                 if(
-                    array_search(
+                    !(array_search(
                     $CAT_INPUT["ID"], 
                     array_column($CATEGORIAS_DB, "ETIQUETA_ID_FK")
-                    ) !==FALSE
+                    ) !==FALSE)
                 )
                 {
-                    /*echo json_encode(array(
-                        "NO_INSERT"=>$CAT_INPUT,
-                    ));*/
-                }else{
-                    /*echo json_encode(array(
-                        "TO_INSERT"=>$CAT_INPUT,
-                    ));*/
 
                     $sql =       
                     "INSERT INTO `ATRIBUTO`(`ARTICULO_ID_FK`, `ETIQUETA_ID_FK`, `ESPECIFICACION`) 
@@ -152,12 +106,7 @@ try{
                                     $CAT_INPUT["path"],
                     ); 
         
-                    if ($stmt_u->execute()){
-                        /*echo json_encode(array(
-                            "message"=>"Atributo añadido", 
-                            "status"=>"Success",
-                        ));*/
-                    }else{
+                    if (!($stmt_u->execute())){
                         echo json_encode(array(
                             "message"=>"Error al añadir una atributo",
                             "status"=>"Error"
@@ -180,9 +129,12 @@ try{
     ));
 
 }
-catch(mysqli_sql_exception  $e){
-    echo $e->getMessage();
-    die("and error has been ocurred" . $e);
+catch(mysqli $e){
+    echo json_encode(array(
+      "message"=>$e,
+      "status"=>"Error",
+    ));
+    return $e;
 }
 
 $conn->close();

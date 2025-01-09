@@ -1,0 +1,93 @@
+
+----------------------------------------------------------
+ALTER TABLE USUARIOS ADD VENDEDOR TEXT UNSIGNED NULL;
+
+ALTER TABLE `USUARIOS`
+ADD KEY `VENDEDOR_FK` (`VENDEDOR_FK`);
+  
+ALTER TABLE `USUARIOS`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`VENDEDOR_FK`) REFERENCES `USUARIOS` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+----------------------------------------------------------
+ALTER TABLE USUARIOS CHANGE APELLIDOS ESTADO TEXT;
+----------------------------------------------------------
+
+CREATE TABLE ARTICULO (
+  ID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  REFERENCIA TEXT NOT NULL,
+  NOMBRE TEXT NOT NULL,
+  DESCRIPCION TEXT NULL,
+  IMAGEN TEXT NULL,
+  PRECIO TEXT NULL,
+  STOCK TEXT NULL,
+  ESTADO TEXT NULL,
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE ETIQUETA (
+  ID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  NOMBRE TEXT NOT NULL,
+  DESCRIPCION TEXT NULL,
+  ESTADO TEXT NOT NULL,
+  PADRE_ID_FK int(10) UNSIGNED DEFAULT NULL, 
+  PRIMARY KEY(ID),
+  FOREIGN KEY (PADRE_ID_FK) REFERENCES ETIQUETA (ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE ATRIBUTO (
+  ID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  ARTICULO_ID_FK INTEGER UNSIGNED NOT NULL,
+  ETIQUETA_ID_FK INTEGER UNSIGNED NOT NULL,
+  ESPECIFICACION TEXT NULL,
+  PRIMARY KEY(ID),
+  FOREIGN KEY (ARTICULO_ID_FK) REFERENCES ARTICULO (ID) ON DELETE NO ACTION ON UPDATE NO ACTION
+  FOREIGN KEY (ETIQUETA_ID_FK) REFERENCES ETIQUETA (ID) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+-----------------------------------------------------------
+
+    /*"SELECT *
+    FROM ETIQUETA";*/
+    /*Tree
+    * Se utilizara para ver todo el arbol de etiquetas
+    "WITH RECURSIVE category_path (ID, NOMBRE, path) AS
+    (
+    SELECT ID, NOMBRE, NOMBRE as path
+        FROM ETIQUETA
+        WHERE PADRE_ID_FK IS NULL
+    UNION ALL
+    SELECT c.ID, c.NOMBRE, CONCAT(cp.path, ' > ', c.NOMBRE)
+        FROM category_path AS cp JOIN ETIQUETA AS c
+        ON cp.ID = c.PADRE_ID_FK
+    )
+    SELECT * FROM category_path
+    ORDER BY path;
+    ";
+    */
+    
+    /*
+    *Hijos de un padre
+    * Se utilizara para navegar desde la root hasta las leaf
+    "SELECT ID, NOMBRE
+    FROM ETIQUETA
+    WHERE PADRE_ID_FK = 14;
+    ";
+    */
+
+    /* Root nodes
+    * Se utilizara para generear el dropdown inicial
+    "SELECT ID, NOMBRE
+    FROM ETIQUETA
+    WHERE PADRE_ID_FK IS NULL;
+    ";
+    */
+
+    /* Leaf nodes 
+    * Se utilizara para añador categorias
+        "SELECT
+        c1.ID, c1.NOMBRE
+        FROM
+        ETIQUETA c1
+        LEFT JOIN ETIQUETA c2 
+        ON c2.PADRE_ID_FK = c1.ID
+        WHERE c2.ID IS NULL;";
+    */

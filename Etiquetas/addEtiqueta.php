@@ -34,7 +34,7 @@ try{
     if ($stmt->execute()){
 
         echo json_encode(array(
-            "message"=>"La Etiqueta fue registrado correctamente", 
+            "message"=>"La etiqueta fue registrada correctamente", 
             "status"=>"Success"
         ));
 
@@ -46,8 +46,13 @@ try{
         ));
     }
 
-} catch(Exception $e){
-    echo $e->getMessage();
+} 
+catch(mysqli $e){
+    echo json_encode(array(
+      "message"=>$e,
+      "status"=>"Error",
+    ));
+    return $e;
 }
 
 $conn->close();

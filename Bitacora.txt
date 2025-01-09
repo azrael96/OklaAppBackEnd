@@ -27,13 +27,13 @@ Week 3
 [ONGOING] Imágenes en Scroll
 	[DONE] Funcionamiento base
 	[ONGOING] Conexión con múltiples imágenes
-[ONGOING] Modulo Productos
-	[ONGOING] Listado de Productos
+[DONE] Modulo Productos
+	[DONE] Listado de Productos
 		[DONE] Mostrar todos los productos
 		[DONE] Separar las vistas en Baches
-		[ONGOING] Buscador de Productos
+		[DONE] Buscador de Productos
 			[DONE] Funcionamiento básico
-			[ONGOING] Filtros avanzados
+			[DONE] Filtros avanzados
 	[DONE]Listado últimos productos vistos
 	[DONE] Añadir Productos
 ---------------
@@ -48,35 +48,113 @@ Week 4
 	[DONE] Clasificación de Productos
 	[DONE] Edición de Clasificación
 	[DONE] Búsqueda de Productos por Categorías
-		[ONGOING] Tipo de Búsqueda Exclusiva
-		[ONGOING] Tipo de Búsqueda Inclusiva
+		[DONE] Tipo de Búsqueda Inclusiva
 ----------------
 Week 5
 ----------------
-[ONGOING] Reestructuración del Frontend
-[ONGOING] Reestructuración del Backend
-[ONGOING] Refactorización del Código
-[ONGOING] Documentación del Código
+## Semana de navidad ##
+[DONE] Reestructuración del Frontend
+[DONE] Reestructuración del Backend
+[DONE] Refactorización del Código
+[DONE] Documentación del Código
 [DONE] Modulo Usuarios
 	[DONE] Estructura por Tipo Usuarios
+	[DONE] Negar acceso a los Usuarios de acuerdo al tipo
 [DONE] Modulo Productos
+	[DONE] Tipo de Búsqueda Exclusiva por termino
 	[DONE] Búsquedas ordenadas por # de matches
+	[DONE] Admin puede buscar por estado del producto
+----------------
+Week 6
+----------------
+## Semana fin de año ##
+[DONE] Modulo Usuarios
+	[DONE] CRUD Usuarios
+	[DONE] Admin puede buscar usuario por rol estado nombre y documento
+	[DONE] Usuario Admin puede cambiar la información de los usuarios (incluyendo contraseñas)
+	[DONE] Usuario Admin puede eliminar usuarios en proceso
+	[DONE] Añadir el estado del usuario [Activo, Desactivado, Bloqueado, En Proceso]
+		[DONE] Negar acceso a los Usuarios de acuerdo al estado
+[DONE] Modulo Etiqueta
+	[DONE] Etiquetas se pueden activar e inhabilitar 
+	[DONE] El buscador ignora Etiquetas inhabilitadas
+----------------
+Week 7
+----------------
+-Modulo Carrito
+[DONE] Panel CRUD Vendedor-Distribuidor
+
+-----------------
+
+
 ----------------
 Problemas
 ----------------
+-Scroller no funca completamente
+-Editar usuario se salta confirmar si el documento/username ya existe
+[SOLVED][W7] No se puede registrar un usuario nuevo sin un username porque ya existe otro sin username
+[SOLVED][W7] Versión Web no permite refrescar la página y lo saca del sistema
+[SOLVED][W6] Añadir producto sin etiquetas funciona pero el mensaje muestra error
+[SOLVED][W6] Editar Articulo si no hay etiquetas se sobrepone el texto
+[SOLVED][W6] Articulos se muestran sin importar el estado (Activo/Inactivo no funca)
 [SOLVED][W5] Búsqueda por prioridad es inconsistente 
 [SOLVED][W5] Components no se actualizan al hacer cambios a la bd 
 [SOLVED][W5] si un producto no tiene categorías no se puede acceder a el
 [SOLVED][W5] elementos vacíos generan múltiples errores
-[SOLVED][W4] Buscador no filtra por  
+[SOLVED][W4] Buscador no filtra por prioridad 
 [SOLVED][W4] Buscador es sensible a los espacios
 [SOLVED][W4] Buscador no debería ser afectado por el orden
-[SOLVED][W3] Las bases de datos de prueba y en servidor estaban desincronizadas
-[SOLVED][W3] Backend no funciona correctamente en el servidor
 [SOLVED][W3 W4] La ruta a las imágenes no cargan correctamente
 	[SOLVED][W3] solucionado en Android y Local
 	[SOLVED][W4] continua el problema en web
+[SOLVED][W3] Las bases de datos de prueba y en servidor estaban desincronizadas
+[SOLVED][W3] Backend no funciona correctamente en el servidor
 [SOLVED][W2] Logos e Iconos no se actualizan o muestran correctamente
+----------------
+TO DO
+----------------
+[DONE] Mensaje de registre "admin va a procesesarlo"
+[DONE] Aceptar los TYC
+[DONE] No ver el Rol y Estado al registarse
+[DONE] Mejorar visibilidad de los precios
+[DONE] Agregar cantidad a agregar
+[DONE] Añadir un botón de agregar carro al final
+[DONE] Eliminar imagen del avatar
+[DONE] Logo en el inicio
+
+-Mayúsculas
+-revisar como función XCode Mac
+
+-Panel Principal Diseño 
+	-Poner la barra de búsqueda
+	-? Quitar los últimos 10 vistos
+
+-Cambiar los selects de Ionic por los de PrimeVue
+-Ordenar en GRIDS or LIST Dependiendo
+-Agrupar productos por categorías generales (filtros tipo INGRAM, MercadoLibre)
+-Panel de subida y guardado de imágenes
+
+-Panel Añadir carrito
+	-Confirmar añadir y agregar cantidad
+	-CRUD productos en carrito
+	-Botón comprar o generar cotización
+
+-Panel CRUD Vendedor-Distribuidor
+	-Usuario Admin asigna al cliente un vendedor
+	-Admin filtra: por asignar, asignado, vendedor o cliente especifico
+	-Admin Asigna a un Cliente un Vendedor activo
+
+-Usuario Admin CRUD pedidos
+-Usuario clientes múltiples direcciones y preferencias
+-Usuario vendedor/cliente generar/descargar pedidos, cotizaciones
+-Carrito a cotización a pedido a orden
+-Orden observaciones (de envió, cantidad y detalles)
+-Precio / oferta, y descuentos comerciales y personalizados
+-Usuario vendedor/cliente Historial de pedidos y seguimiento
+-Sistema de pedidos
+-Sistema de notificaciones
+-Sistemas de informes
+-Sistema de PQR y TyC
 
 ----------------------------
 dependencias

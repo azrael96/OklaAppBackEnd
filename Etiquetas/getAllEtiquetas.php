@@ -26,7 +26,6 @@ try{
 
     $stmt = $conn->prepare($sql);
     //$stmt->bind_param('i', $offset);
-
     $stmt->execute();
 
     $resultado = $stmt->get_result();
@@ -34,18 +33,23 @@ try{
     if($resultado->num_rows>0){
         $fila = $resultado->fetch_all(MYSQLI_ASSOC);
         echo json_encode(array(
-            "message"=>"Se enviaron todas las etiquetas",
+            "message"=>"Se encontraron las etiquetas",
             "status"=>"Success",
             "etiquetas" => $fila,
         ));
     }else{
         echo json_encode(array(
-            "message"=>"Error: No hay etiquetas",
+            "message"=>"Error: No se encontraron etiquetas",
             "status"=>"Error"
         ));
     }
-} catch(Exception $e){
-    echo $e->getMessage();
+}
+catch(mysqli $e){
+    echo json_encode(array(
+      "message"=>$e,
+      "status"=>"Error",
+    ));
+    return $e;
 }
 
 $conn->close();

@@ -3,34 +3,44 @@ header("Access-Control-Allow-Origin");
 
 include("../db.php");
 
-try{
+$id = $_REQUEST["id"];
 
+try{
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "";
+    $sql = "SELECT DOCUMENTO, NOMBRE_RAZON_SOCIAL, 
+        ESTADO, TELEFONO, CORREO, ROL, USERNAME
+        FROM USUARIOS
+        WHERE ID = ?;
+        ";
 
     $stmt = $conn->prepare($sql);
-    //$stmt->bind_param('i', $offset);
+    $stmt->bind_param('i', $id);
+
     $stmt->execute();
 
     $resultado = $stmt->get_result();
-
+    
     if($resultado->num_rows>0){
-        $fila = $resultado->fetch_all(MYSQLI_ASSOC);
+        $usuario = $resultado->fetch_assoc();
+
         echo json_encode(array(
-            "message"=>"Se encontraron las etiquetas del articulo",
-            "status"=>"Success",
-            "categorias" => $fila,
-        ));
+            "message"=>"El usuario fue encontrado",
+            "status" => "Success",
+            "usuario" => $usuario,
+            )
+        );
+        
     }else{
         echo json_encode(array(
-            "message"=>"Error: No se encontraron las etiquetas del articulo",
+            "message"=>"Error: El usuario no existe",
             "status"=>"Error"
         ));
     }
-}
+
+} 
 catch(mysqli $e){
     echo json_encode(array(
       "message"=>$e,
@@ -38,6 +48,6 @@ catch(mysqli $e){
     ));
     return $e;
 }
-
-$conn->close();
+ 
+$conn->close(); 
 ?>
