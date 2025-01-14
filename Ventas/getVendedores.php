@@ -3,18 +3,8 @@ header("Access-Control-Allow-Origin");
 
 include("../db.php");
 
-$rol = "VENDEDOR"; //$_REQUEST["rol"];
+$rol = "VENDEDOR"; 
 $vendedores = array();
-
-/*
-if ($rol == "NINGUNO"){
-    $rol = "";
-}
-
-if ($estado == "NINGUNO"){
-    $estado = "";
-}
-*/
 
 try{
     if (!$conn) {

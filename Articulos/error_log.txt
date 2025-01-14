@@ -3,3 +3,7 @@
 [04-Jan-2025 20:06:20 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\Proyectos\Backend\db.php on line 9
 [04-Jan-2025 20:42:12 Europe/Berlin] PHP Warning:  Undefined array key "ETIQUETA" in C:\xampp\htdocs\Proyectos\Backend\Articulos\addArticulo.php on line 14
 [04-Jan-2025 20:42:12 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, null given in C:\xampp\htdocs\Proyectos\Backend\Articulos\addArticulo.php on line 41
+[10-Jan-2025 17:39:13 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\Proyectos\Backend\Articulos\getArticulo.php on line 6
+[13-Jan-2025 20:16:11 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\Proyectos\Backend\db.php on line 9
+[13-Jan-2025 20:16:20 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\Proyectos\Backend\db.php on line 9
+[13-Jan-2025 20:16:24 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\Proyectos\Backend\db.php on line 9

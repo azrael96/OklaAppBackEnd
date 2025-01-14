@@ -81,17 +81,45 @@ Week 6
 ----------------
 Week 7
 ----------------
--Modulo Carrito
+[DONE] Panel Principal Diseño 
+	[DONE] Poner la barra de búsqueda funcional
+		[DONE] Si el valor de la barra es vacío 
+	[?] Quitar los últimos 10 vistos
+
 [DONE] Panel CRUD Vendedor-Distribuidor
+	[DONE] Usuario Admin asigna al cliente un vendedor
+	[DONE] Admin filtra: por asignar, asignado, vendedor o cliente especifico
+	[DONE] Admin Asigna a un Cliente un Vendedor activo
 
------------------
+[ONGOING] Panel Añadir carrito
+	[DONE] Confirmar añadir y agregar cantidad
+		[DONE] Si el producto ya existe añadir a cantidad
+		[DONE] No añadir producto si cantidad es 0
+		- Referenciar con Productos en stock
+	[DONE] CRUD productos en carrito
+		[DONE] Eliminar Producto
+		[DONE] Actualizar Productos
+	[ONGOING] Botón comprar o generar cotización
 
+----------------
+Week 8
+----------------
+
+[DONE][W8] Responsive en múltiples tipos de pantallas a todo el sistema
+	[DONE][W8] Ordenar en GRIDS 
+	[DONE][W8] Modificar visualización en xs sm md lg según el caso
+
+-Informe de siigo CVS
+-Panel de Importación de Stock
+-Panel de Exportar e Importar precios 
 
 ----------------
 Problemas
 ----------------
 -Scroller no funca completamente
--Editar usuario se salta confirmar si el documento/username ya existe
+-Editar usuario como admin se salta confirmar si el documento/username ya existe
+-primevue select in very small sizes doesnt look good 
+
 [SOLVED][W7] No se puede registrar un usuario nuevo sin un username porque ya existe otro sin username
 [SOLVED][W7] Versión Web no permite refrescar la página y lo saca del sistema
 [SOLVED][W6] Añadir producto sin etiquetas funciona pero el mensaje muestra error
@@ -113,36 +141,24 @@ Problemas
 ----------------
 TO DO
 ----------------
-[DONE] Mensaje de registre "admin va a procesesarlo"
-[DONE] Aceptar los TYC
-[DONE] No ver el Rol y Estado al registarse
-[DONE] Mejorar visibilidad de los precios
-[DONE] Agregar cantidad a agregar
-[DONE] Añadir un botón de agregar carro al final
-[DONE] Eliminar imagen del avatar
-[DONE] Logo en el inicio
+[DONE][W7] Mensaje de registre "admin va a procesesarlo"
+[DONE][W7] Aceptar los TYC
+[DONE][W7] No ver el Rol y Estado al registarse
+[DONE][W7] Mejorar visibilidad de los precios
+[DONE][W7] Agregar cantidad a agregar
+[DONE][W7] Añadir un botón de agregar carro al final
+[DONE][W7] Eliminar imagen del avatar
+[DONE][W7] Logo en el inicio
+[DONE][W8] Mayúsculas
 
--Mayúsculas
--revisar como función XCode Mac
-
--Panel Principal Diseño 
-	-Poner la barra de búsqueda
-	-? Quitar los últimos 10 vistos
-
+-revisar como funciona XCode Mac
+-mejorar visualización de las alertas
 -Cambiar los selects de Ionic por los de PrimeVue
--Ordenar en GRIDS or LIST Dependiendo
--Agrupar productos por categorías generales (filtros tipo INGRAM, MercadoLibre)
+	-primevue no es muy responsive en pantallas <xs 
+
+-? Agrupar productos por categorías generales 
+	(filtros tipo INGRAM, MercadoLibre)
 -Panel de subida y guardado de imágenes
-
--Panel Añadir carrito
-	-Confirmar añadir y agregar cantidad
-	-CRUD productos en carrito
-	-Botón comprar o generar cotización
-
--Panel CRUD Vendedor-Distribuidor
-	-Usuario Admin asigna al cliente un vendedor
-	-Admin filtra: por asignar, asignado, vendedor o cliente especifico
-	-Admin Asigna a un Cliente un Vendedor activo
 
 -Usuario Admin CRUD pedidos
 -Usuario clientes múltiples direcciones y preferencias
@@ -154,7 +170,7 @@ TO DO
 -Sistema de pedidos
 -Sistema de notificaciones
 -Sistemas de informes
--Sistema de PQR y TyC
+-Sistema de PQR
 
 ----------------------------
 dependencias

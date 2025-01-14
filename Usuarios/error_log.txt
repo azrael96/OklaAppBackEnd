@@ -1,3 +1,8 @@
 [04-Jan-2025 22:29:44 Europe/Berlin] PHP Warning:  Undefined variable $usuario in C:\xampp\htdocs\Proyectos\Backend\Usuarios\delUser.php on line 25
 [04-Jan-2025 22:31:43 Europe/Berlin] PHP Warning:  Undefined variable $usuario in C:\xampp\htdocs\Proyectos\Backend\Usuarios\delUser.php on line 25
 [07-Jan-2025 20:11:30 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\Proyectos\Backend\db.php on line 9
+[11-Jan-2025 16:59:20 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\Proyectos\Backend\db.php on line 9
+[11-Jan-2025 16:59:22 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\Proyectos\Backend\db.php on line 9
+[11-Jan-2025 16:59:52 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\Proyectos\Backend\db.php on line 9
+[11-Jan-2025 17:00:23 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\Proyectos\Backend\db.php on line 9
+[11-Jan-2025 17:00:39 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\Proyectos\Backend\db.php on line 9
